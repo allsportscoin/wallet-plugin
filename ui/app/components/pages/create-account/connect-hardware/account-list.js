@@ -104,7 +104,7 @@ class AccountList extends Component {
                 h(
                     'a.hw-account-list__item__link',
                     {
-                    href: genAccountLink(a.address, this.props.network),
+                    href: `http://test-socscan.allsportschain.com/#/account?address=${a.address}`,
                     target: '_blank',
                     title: this.context.t('etherscanView'),
                     },

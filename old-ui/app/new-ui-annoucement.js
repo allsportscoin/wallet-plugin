@@ -28,12 +28,12 @@ module.exports = class NewUiAnnouncement extends PureComponent {
       h('div.new-ui-announcement', [
         h('section.new-ui-announcement__announcement-header', [
           h('h1', 'Announcement'),
-          h('a.close', {
-            onClick: this.close,
-          }, '×'),
+          // h('a.close', {
+          //   onClick: this.close,
+          // }, '×'),
         ]),
         h('section.new-ui-announcement__body', [
-          h('h1', 'A New Version of MetaMask'),
+          h('h1', 'A New Version of SOC Wallet'),
           h('p', [
             "We're excited to announce a brand-new version of MetaMask with enhanced features and functionality.",
           ]),
@@ -50,34 +50,34 @@ module.exports = class NewUiAnnouncement extends PureComponent {
             ]),
           ]),
           h('p', [
-            'You can still use the current version of MetaMask. The new version is still in beta, ' +
+            'You can still use the current version of SOC Wallet. The new version is still in beta, ' +
             'however we encourage you to try it out as we transition into this exciting new update.',
             h('span', {
               dangerouslySetInnerHTML: {
                 __html: '&nbsp;',
               },
             }),
-            h('a', {
-              href: 'https://medium.com/metamask/74dba32cc7f7',
-              onClick ({target}) {
-                const url = target.href
-                global.platform.openWindow({
-                  url,
-                })
-              },
-            }, [
-              'Learn more.',
-            ]),
+            // h('a', {
+            //   // href: 'https://medium.com/metamask/74dba32cc7f7',
+            //   onClick ({target}) {
+            //     const url = target.href
+            //     global.platform.openWindow({
+            //       url,
+            //     })
+            //   },
+            // }, [
+            //   'Learn more.',
+            // ]),
           ]),
         ]),
         h('section.new-ui-announcement__footer', [
-          h('h1', 'Ready to try the new MetaMask?'),
+          h('h1', 'Ready to try the new SOC Wallet?'),
           h('button.positive', {
             onClick: this.switchToNewUi,
           }, 'Try it now'),
-          h('button.negative', {
-            onClick: this.close,
-          }, 'No thanks, maybe later'),
+          // h('button.negative', {
+          //   onClick: this.close,
+          // }, 'No thanks, maybe later'),
         ]),
       ])
     )

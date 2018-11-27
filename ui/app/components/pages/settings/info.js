@@ -14,7 +14,7 @@ class Info extends Component {
   renderLogo () {
     return (
       h('div.settings__info-logo-wrapper', [
-        h('img.settings__info-logo', { src: 'images/info-logo.png' }),
+        h('img.settings__info-logo', { src: 'images/soc-logo.png' }),
       ])
     )
   }
@@ -83,13 +83,13 @@ class Info extends Component {
           h('div.settings__content-item.settings__content-item--without-height', [
             this.renderLogo(),
             h('div.settings__info-item', [
-              h('div.settings__info-version-header', 'MetaMask Version'),
+              h('div.settings__info-version-header', 'SOC Wallet Version'),
               h('div.settings__info-version-number', this.state.version),
             ]),
             h('div.settings__info-item', [
               h(
                 'div.settings__info-about',
-                this.context.t('builtInCalifornia')
+                // this.context.t('builtInCalifornia')
               ),
             ]),
           ]),

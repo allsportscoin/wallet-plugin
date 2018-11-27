@@ -188,7 +188,8 @@ class AccountDropdowns extends Component {
             closeMenu: () => {},
             onClick: () => {
               const { selected, network } = this.props
-              const url = genAccountLink(selected, network)
+              // const url = genAccountLink(selected, network)
+	            const url = `http://test-socscan.allsportschain.com/#/account?address=${selected}`
               global.platform.openWindow({ url })
             },
           },

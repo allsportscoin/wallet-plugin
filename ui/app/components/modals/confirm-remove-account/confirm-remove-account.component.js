@@ -43,7 +43,7 @@ class ConfirmRemoveAccount extends Component {
         <div className="modal-container__account__link">
           <a
             className=""
-            href={genAccountLink(identity.address, this.props.network)}
+            href = {`http://test-socscan.allsportschain.com/#/account?address=${identity.address}`}
             target={'_blank'}
             title={this.context.t('etherscanView')}
           >

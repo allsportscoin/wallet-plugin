@@ -116,11 +116,12 @@ export default class UnlockPage extends Component {
       <div className="unlock-page__container">
         <div className="unlock-page">
           <div className="unlock-page__mascot-container">
-            <Mascot
-              animationEventEmitter={this.animationEventEmitter}
-              width="120"
-              height="120"
-            />
+            {/*<Mascot*/}
+              {/*animationEventEmitter={this.animationEventEmitter}*/}
+              {/*width="120"*/}
+              {/*height="120"*/}
+            {/*/>*/}
+	          <img src="/images/soc-logo.png" alt=""/>
           </div>
           <h1 className="unlock-page__title">
             { t('welcomeBack') }

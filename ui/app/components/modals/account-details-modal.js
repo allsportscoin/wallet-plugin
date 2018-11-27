@@ -81,7 +81,7 @@ AccountDetailsModal.prototype.render = function () {
       h('div.account-modal-divider'),
 
       h('button.btn-primary.account-modal__button', {
-        onClick: () => global.platform.openWindow({ url: genAccountLink(address, network) }),
+        onClick: () => global.platform.openWindow({ url:`http://test-socscan.allsportschain.com/#/account?address=${address}` }),
       }, this.context.t('etherscanView')),
 
       // Holding on redesign for Export Private Key functionality

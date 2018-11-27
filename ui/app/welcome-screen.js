@@ -44,17 +44,18 @@ class WelcomeScreen extends Component {
 
         h('div.welcome-screen__info', [
 
-          h(Mascot, {
-            animationEventEmitter: this.animationEventEmitter,
-            width: '225',
-            height: '225',
-          }),
+          // h(Mascot, {
+          //   animationEventEmitter: this.animationEventEmitter,
+          //   width: '225',
+          //   height: '225',
+          // }),
+	      h('img.settings__info-logo', { src: 'images/soc-logo.png' }),
 
           h('div.welcome-screen__info__header', this.context.t('welcomeBeta')),
 
           h('div.welcome-screen__info__copy', this.context.t('metamaskDescription')),
 
-          h('div.welcome-screen__info__copy', this.context.t('holdEther')),
+          // h('div.welcome-screen__info__copy', this.context.t('holdEther')),
 
           h('button.welcome-screen__button', {
             onClick: this.initiateAccountCreation,

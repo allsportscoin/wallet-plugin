@@ -107,9 +107,12 @@ BalanceComponent.prototype.renderFiatAmount = function (fiatDisplayNumber, fiatS
     })
     : `${fiatPrefix}${fiatDisplayNumber} ${upperCaseFiatSuffix}`
 
-  return h('div.fiat-amount', {
-    style: {},
-  }, display)
+  // return h('div.fiat-amount', {
+  //   style: {},
+  // }, display)
+	return h('div.fiat-amount', {
+		style: {},
+	}, '')
 }
 
 BalanceComponent.prototype.getTokenBalance = function (formattedBalance, shorten) {

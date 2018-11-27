@@ -130,15 +130,15 @@ TxListItem.prototype.getSendEtherTotal = function () {
   const totalInETH = conversionUtil(transactionAmount, {
     fromNumericBase: 'hex',
     toNumericBase: 'dec',
-    fromCurrency: 'ETH',
-    toCurrency: 'ETH',
+    fromCurrency: 'SOC',
+    toCurrency: 'SOC',
     fromDenomination: 'WEI',
     conversionRate,
     numberOfDecimals: 6,
   })
 
   return {
-    total: `${totalInETH} ETH`,
+    total: `${totalInETH} SOC`,
     fiatTotal: `${totalInFiat} ${currentCurrency.toUpperCase()}`,
   }
 }
@@ -309,7 +309,7 @@ TxListItem.prototype.render = function () {
 
           h('span.tx-list-value', total),
 
-          fiatTotal && h('span.tx-list-fiat-value', fiatTotal),
+          // fiatTotal && h('span.tx-list-fiat-value', fiatTotal),
 
         ]),
       ]),
