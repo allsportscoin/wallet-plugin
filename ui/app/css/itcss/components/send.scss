@@ -611,7 +611,7 @@
       border: 1px solid $geyser;
       border-radius: 4px;
       background-color: $white;
-      box-shadow: 0 3px 6px 0 rgba(0 ,0 ,0 ,.11);
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .11);
       margin-top: 11px;
       margin-left: -1px;
       overflow-y: scroll;
@@ -645,7 +645,7 @@
     }
   }
 
-  &__to-autocomplete, &__memo-text-area, &__hex-data {
+  &__to-autocomplete, &__memo-text-area, &__extra-data, &__hex-data {
     &__input {
       height: 54px;
       width: 100%;
@@ -659,7 +659,12 @@
       line-height: 21px;
     }
   }
-
+  &__to-autocomplete {
+    &__input {
+      height: 73px;
+      padding-bottom: 30px;
+    }
+  }
   &__amount-max {
     color: $curious-blue;
     font-family: Roboto;
@@ -728,7 +733,7 @@
     border: 1px solid #D8D8D8;
     border-radius: 4px;
     background-color: #FFFFFF;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
     font-family: Roboto;
     display: flex;
     flex-flow: column;
@@ -781,7 +786,7 @@
     }
 
     &__footer {
-      height: 75px;
+      height: 100px;
       border-top: 1px solid $alto;
       display: flex;
       align-items: center;

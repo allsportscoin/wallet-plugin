@@ -15,19 +15,19 @@ const CLOSE_TYPE_DROPDOWN = 'metamask/send/CLOSE_TYPE_DROPDOWN';
 const initState = {
 	type: [{
 		id: 0,
-		label: 'send'
+		label: 'Send'
 	}, {
 		id: 1,
-		label: 'become candidate'
+		label: 'become_candidate'
 	}, {
 		id: 2,
-		label: 'cancel candidate'
+		label: 'cancel_candidate'
 	}, {
 		id: 3,
 		label: 'vote'
 	}, {
 		id: 4,
-		label: 'cancel vote'
+		label: 'cancel_vote'
 	}],
 	typeDropdownOpen: false,
 	fromDropdownOpen: false,

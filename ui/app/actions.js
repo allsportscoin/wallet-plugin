@@ -184,8 +184,10 @@ var actions = {
 	UPDATE_SEND_FROM: 'UPDATE_SEND_FROM',
 	UPDATE_SEND_TYPE: 'UPDATE_SEND_TYPE',
 	UPDATE_SEND_HEX_DATA: 'UPDATE_SEND_HEX_DATA',
+	UPDATE_EXTRA_DATA: 'UPDATE_EXTRA_DATA',
 	UPDATE_SEND_TOKEN_BALANCE: 'UPDATE_SEND_TOKEN_BALANCE',
 	UPDATE_SEND_TO: 'UPDATE_SEND_TO',
+	UPDATE_SEND_ALIAS: 'UPDATE_SEND_ALIAS',
 	UPDATE_SEND_AMOUNT: 'UPDATE_SEND_AMOUNT',
 	UPDATE_SEND_MEMO: 'UPDATE_SEND_MEMO',
 	UPDATE_SEND_ERRORS: 'UPDATE_SEND_ERRORS',
@@ -205,7 +207,9 @@ var actions = {
 	updateSendFrom,
 	updateSendType,
 	updateSendHexData,
+	updateExtraData,
 	updateSendTo,
+	updateSendAlias,
 	updateSendAmount,
 	updateSendMemo,
 	setMaxModeTo,
@@ -873,12 +877,11 @@ function signTx (txData) {
 	console.log('txData', txData);
 	return (dispatch) => {
 		global.ethQuery.sendTransaction(txData, (err, data) => {
+			console.log('data', data);
 			if (err) {
-				console.log('err.message-----', err.message)
 				return dispatch(actions.displayWarning(err.message));
 			}
 		});
-		console.log('通过-----')
 		dispatch(actions.showConfTxPage({}));
 	};
 }
@@ -911,6 +914,7 @@ function updateGasData ({
 	                        selectedToken,
 	                        to,
 	                        value,
+	                        isBind
                         }) {
 	return (dispatch) => {
 		dispatch(actions.gasLoadingStarted());
@@ -931,6 +935,7 @@ function updateGasData ({
 					to,
 					value,
 					estimateGasPrice,
+					isBind
 				}),
 			]);
 		})
@@ -1021,11 +1026,24 @@ function updateSendHexData (value) {
 		value,
 	};
 }
+function updateExtraData (value) {
+	return {
+		type: actions.UPDATE_EXTRA_DATA,
+		value,
+	};
+}
 
 function updateSendTo (to, nickname = '') {
 	return {
 		type: actions.UPDATE_SEND_TO,
 		value: { to, nickname },
+	};
+}
+
+function updateSendAlias (alias) {
+	return {
+		type: actions.UPDATE_SEND_ALIAS,
+		value: { alias },
 	};
 }
 
@@ -1959,7 +1977,7 @@ function showPrivateKey (key) {
 	};
 }
 
-function setAccountLabel (account, label) {
+function setAccountLabel (account, label, snsName) {
 	return (dispatch) => {
 		dispatch(actions.showLoadingIndication());
 		log.debug(`background.setAccountLabel`);
@@ -1975,7 +1993,7 @@ function setAccountLabel (account, label) {
 
 				dispatch({
 					type: actions.SET_ACCOUNT_LABEL,
-					value: { account, label },
+					value: { account, label, snsName },
 				});
 
 				resolve(account);

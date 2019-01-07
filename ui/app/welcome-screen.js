@@ -53,7 +53,7 @@ class WelcomeScreen extends Component {
 
           h('div.welcome-screen__info__header', this.context.t('welcomeBeta')),
 
-          h('div.welcome-screen__info__copy', this.context.t('metamaskDescription')),
+          // h('div.welcome-screen__info__copy', this.context.t('metamaskDescription')),
 
           // h('div.welcome-screen__info__copy', this.context.t('holdEther')),
 

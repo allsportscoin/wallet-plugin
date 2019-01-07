@@ -325,13 +325,8 @@ export function updateTxDataAndCalculate (txData) {
 export function setTransactionToConfirm (transactionId) {
 	return async (dispatch, getState) => {
 		const state = getState();
-		console.log('state----', state);
 		const unconfirmedTransactionsHash = unconfirmedTransactionsHashSelector(state);
-		console.log('unconfirmedTransactionsHash---', unconfirmedTransactionsHash);
 		const transaction = unconfirmedTransactionsHash[transactionId];
-		console.log('transaction----', transaction);
-		console.log('transaction----1', transaction);
-
 		if (!transaction) {
 			console.error(`Transaction with id ${transactionId} not found`);
 			return;

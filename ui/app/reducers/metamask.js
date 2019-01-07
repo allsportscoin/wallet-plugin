@@ -36,6 +36,7 @@ function reduceMetamask (state, action) {
 			tokenBalance: null,
 			from: '',
 			to: '',
+			alias: '',
 			amount: '0x0',
 			memo: '',
 			errors: {},
@@ -43,9 +44,10 @@ function reduceMetamask (state, action) {
 			editingTransactionId: null,
 			forceGasMin: null,
 			toNickname: '',
+			extra: '',
 			selectedType: {
 				id: 0,
-				label: 'send'
+				label: 'Send'
 			},
 		},
 		coinOptions: {},
@@ -170,8 +172,9 @@ function reduceMetamask (state, action) {
 		case actions.SET_ACCOUNT_LABEL:
 			const account = action.value.account;
 			const name = action.value.label;
+			const snsName = action.value.snsName || '';
 			const id = {};
-			id[account] = extend(metamaskState.identities[account], { name });
+			id[account] = extend(metamaskState.identities[account], { name, snsName });
 			const identities = extend(metamaskState.identities, id);
 			return extend(metamaskState, { identities });
 
@@ -232,6 +235,13 @@ function reduceMetamask (state, action) {
 					data: action.value,
 				},
 			});
+		case actions.UPDATE_EXTRA_DATA:
+			return extend(metamaskState, {
+				send: {
+					...metamaskState.send,
+					extra: action.value,
+				},
+			});
 
 		case actions.UPDATE_SEND_FROM:
 			return extend(metamaskState, {
@@ -254,6 +264,13 @@ function reduceMetamask (state, action) {
 					...metamaskState.send,
 					to: action.value.to,
 					toNickname: action.value.nickname,
+				},
+			});
+		case actions.UPDATE_SEND_ALIAS:
+			return extend(metamaskState, {
+				send: {
+					...metamaskState.send,
+					alias: action.value.alias,
 				},
 			});
 
@@ -298,14 +315,16 @@ function reduceMetamask (state, action) {
 					tokenBalance: null,
 					from: '',
 					to: '',
+					alias: '',
 					amount: '0x0',
 					memo: '',
 					errors: {},
 					editingTransactionId: null,
 					forceGasMin: null,
+					extra: '',
 					selectedType: {
 						id: 0,
-						label: 'send'
+						label: 'Send'
 					}
 				},
 			});
