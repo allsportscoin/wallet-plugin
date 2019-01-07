@@ -178,7 +178,8 @@ CurrencyDisplay.prototype.render = function () {
 
       ]),
 
-    ]), this.onlyRenderConversions(convertedValueToRender),
+    ])
+      // , this.onlyRenderConversions(convertedValueToRender),
 
   ])
 

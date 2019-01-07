@@ -19,8 +19,16 @@ export default class SendTypeRow extends Component {
 	};
 
 	async handleTypeChange (newType) {
-		const { updateSendType } = this.props;
+		const { selectedType, updateSendType, updateSendAlias, updateSendTo, updateSendHexData,updateSendToError } = this.props;
+		if (Number(selectedType.id) === Number(newType.id)) {
+			return;
+		}
+		// updateSendAlias('');
+		// updateSendTo('', '');
+		updateSendHexData('');
 		updateSendType(newType);
+		// updateSendToError({to: null});
+
 	}
 
 	render () {
@@ -30,6 +38,7 @@ export default class SendTypeRow extends Component {
 			type,
 			selectedType,
 			typeDropdownOpen,
+			isBind
 		} = this.props;
 		return (
 			<SendRowWrapper label={ `${this.context.t('type')}:` }>
@@ -40,6 +49,7 @@ export default class SendTypeRow extends Component {
 					dropdownOpen={ typeDropdownOpen }
 					onSelect={ newType => this.handleTypeChange(newType) }
 					selectedType={ selectedType }
+					isBind={ isBind }
 				/>
 			</SendRowWrapper>
 		);

@@ -16,32 +16,41 @@ export default class TypeDropdown extends Component {
 	};
 
 	render () {
-		const { type, closeDropdown, dropdownOpen, openDropdown, onSelect, selectedType } = this.props;
+		const { closeDropdown, dropdownOpen, openDropdown, onSelect, selectedType, isBind } = this.props;
+		let type = null;
+		if (Number(isBind === 1)) {
+			type = [{
+				id: 0,
+				label: 'Send'
+			}];
+		} else {
+			type = this.props.type;
+		}
 		return (
 			<div className="type_drop_down">
 				<div onClick={ () => openDropdown() } className="select_text">
-					{ selectedType.label }
+					{ this.context.t(selectedType.label) }
 				</div>
 				<i className={ `fa fa-caret-down fa-lg` }
 				   style={ { color: '#dedede', right: '12px', position: 'absolute', top: '18px' } } />
 				{ dropdownOpen && (
 					<div>
 						<div
-							className={`send-v2__from-dropdown__close-area`}
+							className={ `send-v2__from-dropdown__close-area` }
 							onClick={ () => closeDropdown() }
 						/>
-						<div className={`send-v2__from-dropdown__list dropdown_list`}>
+						<div className={ `send-v2__from-dropdown__list dropdown_list` }>
 							{
 								type.map((type, index) =>
 									<div
-										className={`account-list-item__dropdown dropdown_list_item`}
+										className={ `account-list-item__dropdown dropdown_list_item` }
 										onClick={ () => {
 											onSelect(type);
 											closeDropdown();
 										} }
 										key={ `send-dropdown-type-#${index}` }
 									>
-										{ type.label }
+										{ this.context.t(type.label) }
 									</div>
 								)
 							}

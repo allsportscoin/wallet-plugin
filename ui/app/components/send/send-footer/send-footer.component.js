@@ -56,6 +56,7 @@ export default class SendFooter extends Component {
 			toAccounts,
 			history,
 			selectType,
+			extra,
 			updateSendTo
 		} = this.props;
 		// Should not be needed because submit should be disabled if there are errors.
@@ -86,7 +87,7 @@ export default class SendFooter extends Component {
 				to,
 				unapprovedTxs,
 			})
-			: sign({ data, selectedToken, to, amount, from, gas, gasPrice, type: String(id)});
+			: sign({ data, selectedToken, to, amount, from, gas, gasPrice, type: String(id), extra});
 
 		Promise.resolve(promise)
 		.then(() => history.push(CONFIRM_TRANSACTION_ROUTE));

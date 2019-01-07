@@ -41,9 +41,14 @@ export default class SendTransactionScreen extends PersistentForm {
 		scanQrCode: PropTypes.func,
 		qrCodeDetected: PropTypes.func,
 		qrCodeData: PropTypes.object,
-		selectType: PropTypes.object
+		// selectType: PropTypes.object
 	};
 
+	state = {
+		isBind: 0,
+		bindValue: ''
+	};
+	isBind = 0;
 	static contextTypes = {
 		t: PropTypes.func,
 	};
@@ -76,7 +81,6 @@ export default class SendTransactionScreen extends PersistentForm {
 			to: currentToAddress,
 			updateAndSetGasTotal,
 		} = this.props;
-
 		updateAndSetGasTotal({
 			blockGasLimit,
 			editingTransactionId,
@@ -87,6 +91,7 @@ export default class SendTransactionScreen extends PersistentForm {
 			selectedToken,
 			to: getToAddressForGasUpdate(updatedToAddress, currentToAddress),
 			value: value || amount,
+			isBind: this.isBind
 		});
 	}
 
@@ -170,7 +175,17 @@ export default class SendTransactionScreen extends PersistentForm {
 			selectedToken,
 			tokenContract,
 			updateSendTokenBalance,
+			history
 		} = this.props;
+		const { location } = history;
+		const { state } = location;
+		if (state && Number(state.isBind) === 1) {
+			this.setState({ isBind: state.isBind });
+			this.isBind = state.isBind;
+		}
+		if (state && state.bindValue) {
+			this.setState({ bindValue: state.bindValue });
+		}
 		updateSendTokenBalance({
 			selectedToken,
 			tokenContract,
@@ -203,6 +218,8 @@ export default class SendTransactionScreen extends PersistentForm {
 					selectType={ this.props.selectType }
 					updateGas={ (updateData) => this.updateGas(updateData) }
 					scanQrCode={ _ => this.props.scanQrCode() }
+					isBind={ this.state.isBind }
+					bindValue={ this.state.bindValue }
 				/>
 				<SendFooter history={ history } />
 			</div>

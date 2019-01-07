@@ -1,3 +1,6 @@
+import { contractAbi } from '../../snsAbi';
+import getSnsAddress from '../../../lib/getSnsAddress';
+
 const { valuesFor } = require('../../util');
 const abi = require('human-standard-token-abi');
 const {
@@ -7,9 +10,13 @@ const {
 	estimateGasPriceFromRecentBlocks,
 } = require('./send.utils');
 
+// const Eth = require('ethjs-query');
+// const EthContract = require('ethjs-contract');
+
 const selectors = {
 	accountsWithSendEtherInfoSelector,
 	getSelectSendType,
+	getExtra,
 	// autoAddToBetaUI,
 	getAddressBook,
 	getAmountConversionRate,
@@ -42,6 +49,7 @@ const selectors = {
 	getSendFromObject,
 	getSendMaxModeState,
 	getSendTo,
+	getSendAlias,
 	getSendToAccounts,
 	getTokenBalance,
 	getTokenExchangeRate,
@@ -61,12 +69,36 @@ function accountsWithSendEtherInfoSelector (state) {
 	const accountsWithSendEtherInfo = Object.entries(accounts).map(([key, account]) => {
 		return Object.assign({}, account, identities[key]);
 	});
-
+	// const contractAddress = getSnsAddress(state.metamask.provider.type);
+	// let eth = new Eth(global.ethereumProvider);
+	// let newContract = new EthContract(eth);
+	// let contract = newContract(contractAbi);
+	// const myContract = contract.at(contractAddress);
+	// accountsWithSendEtherInfo.map(item => {
+	// 	try {
+	// 		myContract.getAliasByAddr(item.address, (error, res) => {
+	// 			if (error) {
+	// 				item.snsName = '';
+	// 				return;
+	// 			}
+	// 			if (res && res[0]) {
+	// 				item.snsName = res[0];
+	// 			} else {
+	// 				item.snsName = '';
+	// 			}
+	// 		});
+	// 	} catch (error) {
+	// 		console.log('set snsName error');
+	// 	}
+	// });
 	return accountsWithSendEtherInfo;
 }
 
 function getSelectSendType (state) {
 	return state.metamask.send.selectedType;
+}
+function getExtra (state) {
+	return state.metamask.send.extra;
 }
 
 // function autoAddToBetaUI (state) {
@@ -248,6 +280,10 @@ function getSendMaxModeState (state) {
 
 function getSendTo (state) {
 	return state.metamask.send.to;
+}
+
+function getSendAlias (state) {
+	return state.metamask.send.alias;
 }
 
 function getSendToAccounts (state) {

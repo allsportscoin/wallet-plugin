@@ -22,7 +22,8 @@ import {
 	getSendHexData,
 	getTokenBalance,
 	getUnapprovedTxs,
-	getSelectSendType
+	getSelectSendType,
+	getExtra
 } from '../send.selectors';
 import {
 	isSendFormInError,
@@ -51,13 +52,14 @@ function mapStateToProps (state) {
 		tokenBalance: getTokenBalance(state),
 		unapprovedTxs: getUnapprovedTxs(state),
 		selectType: getSelectSendType(state),
+		extra: getExtra(state),
 	};
 }
 
 function mapDispatchToProps (dispatch) {
 	return {
 		clearSend: () => dispatch(clearSend()),
-		sign: ({ selectedToken, to, amount, from, gas, gasPrice, data, type }) => {
+		sign: ({ selectedToken, to, amount, from, gas, gasPrice, data, type, extra }) => {
 			const txParams = constructTxParams({
 				amount,
 				data,
@@ -66,7 +68,8 @@ function mapDispatchToProps (dispatch) {
 				gasPrice,
 				selectedToken,
 				to,
-				type
+				type,
+				extra
 			});
 
 			selectedToken

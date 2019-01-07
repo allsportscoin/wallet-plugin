@@ -8,7 +8,7 @@ function addHexPrefixToObjectValues (obj) {
 	}, {});
 }
 
-function constructTxParams ({ selectedToken, data, to, amount, from, gas, gasPrice, type }) {
+function constructTxParams ({ selectedToken, data, to, amount, from, gas, gasPrice, type, extra }) {
 	const txParams = {
 		data,
 		from,
@@ -22,6 +22,12 @@ function constructTxParams ({ selectedToken, data, to, amount, from, gas, gasPri
 		txParams.to = to;
 		txParams.type = type;
 	}
+	// extra转换16进制
+	let extraVal = '';
+	for (let i = 0; i < extra.length; i++) {
+		extraVal += '' + extra.charCodeAt(i).toString(16);
+	}
+	txParams.extra = (extraVal && '0x' + extraVal) || undefined;
 
 	return addHexPrefixToObjectValues(txParams);
 }

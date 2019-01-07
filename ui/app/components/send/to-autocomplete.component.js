@@ -106,7 +106,7 @@ export default class ToAutoComplete extends Component {
     } = this.props
 
     return (
-      <div className={'send-v2__to-autocomplete'}>
+      <div className={'send-v2__to-autinvalidAddressRecipientocomplete'}>
         <input
           className={classnames('send-v2__to-autocomplete__input', {
             'send-v2__error-border': inError,

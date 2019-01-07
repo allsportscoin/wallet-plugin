@@ -1,73 +1,90 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { checksumAddress } from '../../../util'
-import Identicon from '../../identicon'
-import CurrencyDisplay from '../currency-display'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { checksumAddress } from '../../../util';
+import Identicon from '../../identicon';
+import CurrencyDisplay from '../currency-display';
 
 export default class AccountListItem extends Component {
 
-  static propTypes = {
-    account: PropTypes.object,
-    className: PropTypes.string,
-    conversionRate: PropTypes.number,
-    currentCurrency: PropTypes.string,
-    displayAddress: PropTypes.bool,
-    displayBalance: PropTypes.bool,
-    handleClick: PropTypes.func,
-    icon: PropTypes.node,
-  };
+	static propTypes = {
+		account: PropTypes.object,
+		className: PropTypes.string,
+		conversionRate: PropTypes.number,
+		currentCurrency: PropTypes.string,
+		displayAddress: PropTypes.bool,
+		displayBalance: PropTypes.bool,
+		handleClick: PropTypes.func,
+		icon: PropTypes.node,
+	};
 
-  static contextTypes = {
-    t: PropTypes.func,
-  };
+	static contextTypes = {
+		t: PropTypes.func,
+	};
 
-  render () {
-    const {
-      account,
-      className,
-      conversionRate,
-      currentCurrency,
-      displayAddress = false,
-      displayBalance = true,
-      handleClick,
-      icon = null,
-    } = this.props
+	constructor (props) {
+		super(props);
 
-    const { name, address, balance } = account || {}
+		this.state = {
+			snsName: ''
+		};
+	}
 
-    return (<div
-      className={`account-list-item ${className}`}
-      onClick={() => handleClick({ name, address, balance })}
-    >
+	componentWillMount () {
+		const { account } = this.props;
+		this.setState({ snsName: account.snsName });
+	}
 
-      <div className="account-list-item__top-row">
-        <Identicon
-          address={address}
-          className="account-list-item__identicon"
-          diameter={18}
-        />
+	componentWillReceiveProps (nextprops) {
+		const { account } = nextprops;
+		this.setState({ snsName: account.snsName });
+	};
 
-        <div className="account-list-item__account-name">{ name || address }</div>
+	render () {
+		const {
+			account,
+			className,
+			conversionRate,
+			currentCurrency,
+			displayAddress = false,
+			displayBalance = true,
+			handleClick,
+			icon = null,
+		} = this.props;
+		const { name, address, balance } = account || {};
 
-        {icon && <div className="account-list-item__icon">{ icon }</div>}
+		return (<div
+			className={ `account-list-item ${className}` }
+			onClick={ () => handleClick({ name, address, balance }) }
+		>
 
-      </div>
+			<div className="account-list-item__top-row">
+				<Identicon
+					address={ address }
+					className="account-list-item__identicon"
+					diameter={ 18 }
+				/>
 
-      {displayAddress && name && <div className="account-list-item__account-address">
-        { checksumAddress(address) }
-      </div>}
+				<div className="account-list-item__account-name">{ this.state.snsName || name || address }</div>
 
-      {displayBalance && <CurrencyDisplay
-        className="account-list-item__account-balances"
-        conversionRate={conversionRate}
-        convertedBalanceClassName="account-list-item__account-secondary-balance"
-        convertedCurrency={currentCurrency}
-        primaryBalanceClassName="account-list-item__account-primary-balance"
-        primaryCurrency="SOC"
-        readOnly={true}
-        value={balance}
-      />}
+				{ icon && <div className="account-list-item__icon">{ icon }</div> }
 
-    </div>)
-  }
+			</div>
+
+			{ displayAddress && name && <div className="account-list-item__account-address">
+				{ checksumAddress(address) }
+			</div> }
+
+			{ displayBalance && <CurrencyDisplay
+				className="account-list-item__account-balances"
+				conversionRate={ conversionRate }
+				convertedBalanceClassName="account-list-item__account-secondary-balance"
+				convertedCurrency={ currentCurrency }
+				primaryBalanceClassName="account-list-item__account-primary-balance"
+				primaryCurrency="SOC"
+				readOnly={ true }
+				value={ balance }
+			/> }
+
+		</div>);
+	}
 }

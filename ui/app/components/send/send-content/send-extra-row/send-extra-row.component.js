@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SendRowWrapper from '../send-row-wrapper';
 
-export default class SendHexDataRow extends Component {
+export default class SendExtraRow extends Component {
 	static propTypes = {
-		data: PropTypes.string,
+		extra: PropTypes.string,
 		inError: PropTypes.bool,
-		updateSendHexData: PropTypes.func.isRequired,
+		updateExtraData: PropTypes.func.isRequired,
 	};
 
 	static contextTypes = {
@@ -14,26 +14,30 @@ export default class SendHexDataRow extends Component {
 	};
 
 	onInput = (event) => {
-		const { updateSendHexData } = this.props;
+		const { updateExtraData } = this.props;
 		event.target.value = event.target.value.replace(/\n/g, '');
-		updateSendHexData(event.target.value || null);
+		if (event.target.value !== '' && !(/^[A-Za-z0-9+/=,.'" ]+$/.test(event.target.value))) {
+			return;
+		}
+		updateExtraData(event.target.value || '');
 	};
 
 	render () {
-		const { inError, data } = this.props;
+		const { inError, extra } = this.props;
 		const { t } = this.context;
 
 		return (
 			<SendRowWrapper
-				label={ `${t('hexData')}:` }
+				label={ `${t('extra')}:` }
 				showError={ inError }
 				errorType={ 'amount' }
 			>
         <textarea
-	        value={ data }
+	        value={ extra }
 	        onInput={ this.onInput }
 	        placeholder={ `${t('Optional')}` }
-	        className="send-v2__hex-data__input"
+	        className="send-v2__extra-data__input"
+	        maxLength={ 32 }
         />
 			</SendRowWrapper>
 		);
