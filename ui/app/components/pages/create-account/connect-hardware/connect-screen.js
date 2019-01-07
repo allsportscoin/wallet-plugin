@@ -140,7 +140,7 @@ class ConnectScreen extends Component {
             h('div.hw-connect', {}, [
                 h('h3.hw-connect__title', {}, this.context.t(`step${i + 1}HardwareWallet`)),
                 h('p.hw-connect__msg', {}, this.context.t(`step${i + 1}HardwareWalletMsg`)),
-                h('img.hw-connect__step-asset', { src: `images/${step.asset}.svg`, ...step.dimensions }),
+                // h('img.hw-connect__step-asset', { src: `images/${step.asset}.svg`, ...step.dimensions }),
             ])
             ))
         )
@@ -151,13 +151,13 @@ class ConnectScreen extends Component {
             h('div.hw-connect__footer', {}, [
                 h('h3.hw-connect__footer__title', {}, this.context.t(`readyToConnect`)),
                 this.renderButtons(),
-                h('p.hw-connect__footer__msg', {}, [
-                    this.context.t(`havingTroubleConnecting`),
-                    h('a.hw-connect__footer__link', {
-                        href: 'https://support.metamask.io/',
-                        target: '_blank',
-                      }, this.context.t('getHelp')),
-                ]),
+                // h('p.hw-connect__footer__msg', {}, [
+                //     this.context.t(`havingTroubleConnecting`),
+                //     h('a.hw-connect__footer__link', {
+                //         href: 'https://support.metamask.io/',
+                //         target: '_blank',
+                //       }, this.context.t('getHelp')),
+                // ]),
             ])
         )
     }

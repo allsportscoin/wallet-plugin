@@ -17,7 +17,10 @@
     font-size: .75rem;
     color: $silver-chalice;
   }
-
+  &__alias__logo {
+    width: 16px;
+    vertical-align: middle;
+  }
   &__clickable {
     display: flex;
     flex-direction: column;

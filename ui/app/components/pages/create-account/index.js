@@ -41,19 +41,19 @@ class CreateAccountPage extends Component {
       }, [
         this.context.t('import'),
       ]),
-      h(
-        'div.new-account__tabs__tab',
-        {
-          className: classnames('new-account__tabs__tab', {
-            'new-account__tabs__selected': matchPath(location.pathname, {
-              path: CONNECT_HARDWARE_ROUTE,
-              exact: true,
-            }),
-          }),
-          onClick: () => history.push(CONNECT_HARDWARE_ROUTE),
-        },
-        this.context.t('connect')
-      ),
+      // h(
+      //   'div.new-account__tabs__tab',
+      //   {
+      //     className: classnames('new-account__tabs__tab', {
+      //       'new-account__tabs__selected': matchPath(location.pathname, {
+      //         path: CONNECT_HARDWARE_ROUTE,
+      //         exact: true,
+      //       }),
+      //     }),
+      //     onClick: () => history.push(CONNECT_HARDWARE_ROUTE),
+      //   },
+      //   this.context.t('connect')
+      // ),
     ])
   }
 
@@ -107,7 +107,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.showModal({ name: 'EXPORT_PRIVATE_KEY' }))
   },
   hideModal: () => dispatch(actions.hideModal()),
-  setAccountLabel: (address, label) => dispatch(actions.setAccountLabel(address, label)),
+  setAccountLabel: (address, label, snsName) => dispatch(actions.setAccountLabel(address, label, snsName)),
 })
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(CreateAccountPage)

@@ -74,6 +74,15 @@ export default class ConfirmTransactionBase extends Component {
 	state = {
 		submitting: false,
 	};
+	mounted = false;
+
+	componentDidMount () {
+		this.mounted = true;
+	};
+
+	componentWillUnmount () {
+		this.mounted = false;
+	};
 
 	componentDidUpdate () {
 		const {
@@ -272,15 +281,25 @@ export default class ConfirmTransactionBase extends Component {
 
 		if (onSubmit) {
 			Promise.resolve(onSubmit(txData))
-			.then(this.setState({ submitting: false }));
+			.then(() => {
+				if (this.mounted) {
+					this.setState({ submitting: false });
+				}
+			});
 		} else {
 			sendTransaction(txData)
 			.then(() => {
 				clearConfirmTransaction();
-				this.setState({ submitting: false });
-				history.push(DEFAULT_ROUTE);
+				if (this.mounted) {
+					this.setState({ submitting: false });
+					history.push(DEFAULT_ROUTE);
+				}
 			})
-			.catch(() => this.setState({ submitting: false }));
+			.catch(() => {
+				if (this.mounted) {
+					this.setState({ submitting: false });
+				}
+			});
 		}
 	}
 

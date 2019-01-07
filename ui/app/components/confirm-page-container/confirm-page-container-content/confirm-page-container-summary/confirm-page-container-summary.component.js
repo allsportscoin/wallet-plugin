@@ -30,9 +30,9 @@ const ConfirmPageContainerSummary = props => {
             />
           )
         }
-        <div className="confirm-page-container-summary__title-text">
-          { title }
-        </div>
+        {/*<div className="confirm-page-container-summary__title-text">*/}
+          {/*{ title }*/}
+        {/*</div>*/}
       </div>
       {
         hideSubtitle || <div className="confirm-page-container-summary__subtitle">

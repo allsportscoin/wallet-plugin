@@ -42,10 +42,13 @@
   }
 
   &__subtitle {
-    color: $oslo-gray;
+    //color: $oslo-gray;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 25px;
+    margin-top: 20px;
+    color: #4d4d4d;
   }
 
   &--border {

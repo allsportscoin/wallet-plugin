@@ -25,12 +25,12 @@ const ConfirmDetailRow = props => {
         >
           { headerText }
         </div>
-        <div
-          className="confirm-detail-row__fiat"
-          style={{ color: fiatTextColor }}
-        >
-          { fiatText }
-        </div>
+        {/*<div*/}
+          {/*className="confirm-detail-row__fiat"*/}
+          {/*style={{ color: fiatTextColor }}*/}
+        {/*>*/}
+          {/*{ fiatText }*/}
+        {/*</div>*/}
         <div className="confirm-detail-row__eth">
           { ethText }
         </div>
