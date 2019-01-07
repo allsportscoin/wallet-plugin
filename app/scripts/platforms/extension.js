@@ -65,7 +65,7 @@ class ExtensionPlatform {
     const nonce = parseInt(txMeta.txParams.nonce, 16)
 
     const title = 'Confirmed transaction'
-    const message = `Transaction ${nonce} confirmed! View on EtherScan`
+    const message = `Transaction ${nonce} confirmed! View on Socscan`
     this._showNotification(title, message, url)
   }
 
@@ -83,7 +83,7 @@ class ExtensionPlatform {
       {
       'type': 'basic',
       'title': title,
-      'iconUrl': extension.extension.getURL('../../images/icon-64.png'),
+      'iconUrl': extension.extension.getURL('../../images/icon-128.png'),
       'message': message,
       })
   }

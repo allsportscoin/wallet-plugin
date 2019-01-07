@@ -24,6 +24,7 @@ const normalizers = {
 	gas: gas => addHexPrefix(gas),
 	gasPrice: gasPrice => addHexPrefix(gasPrice),
 	type: type => addHexPrefix(type),
+	extra: extra => addHexPrefix(extra),
 };
 
 /**

@@ -419,7 +419,7 @@
     "message": "Get SOC"
   },
   "getEtherFromFaucet": {
-    "message": "Get SOC from a faucet for the $1",
+    "message": "Get SOC from a faucet for the test",
     "description": "Displays network name for SOC faucet"
   },
   "getHelp": {
@@ -536,7 +536,7 @@
     "message": "Keep track of the tokens you’ve bought with your SOC Wallet account."
   },
   "kovan": {
-    "message": "Kovan Test Network"
+    "message": "Test Network"
   },
   "knowledgeDataBase": {
     "message": "Visit our Knowledge Base"
@@ -830,7 +830,7 @@
     "message": "Test Network"
   },
   "ropsten": {
-    "message": "Ropsten Test Network"
+    "message": "Test Network"
   },
   "rpc": {
     "message": "Custom RPC"
@@ -842,13 +842,13 @@
     "message": "Connecting to Main Allsportschain Network"
   },
   "connectingToRopsten": {
-    "message": "Connecting to Ropsten Test Network"
+    "message": "Connecting to Test Network"
   },
   "connectingToKovan": {
-    "message": "Connecting to Kovan Test Network"
+    "message": "Connecting to Test Network"
   },
   "connectingToRinkeby": {
-    "message": "Connecting to Rinkeby Test Network"
+    "message": "Connecting to Test Network"
   },
   "connectingToUnknown": {
     "message": "Connecting to Unknown Network"
@@ -1194,5 +1194,50 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "Your private seed phrase"
+  },
+  "socResolver": {
+    "message": "Resolver"
+  },
+  "bind": {
+    "message": "Bind"
+  },
+  "alias": {
+    "message": "Alias"
+  },
+  "receiptNickName": {
+    "message": "Receipt NickName In Chain"
+  },
+  "Send": {
+    "message": "Send"
+  },
+  "become_candidate": {
+    "message": "Become candidate"
+  },
+  "cancel_candidate": {
+    "message": "Cancel candidate"
+  },
+  "vote": {
+    "message": "Vote"
+  },
+  "cancel_vote": {
+    "message": "Cancel vote"
+  },
+  "version": {
+    "message": "Version"
+  },
+  "currentLanguage": {
+    "message": "Current Language"
+  },
+  "createPassword": {
+    "message": "Create Password"
+  },
+  "importWord": {
+    "message": "Import with seed phrase"
+  },
+  "Optional": {
+    "message": "Optional"
+  },
+  "extra": {
+    "message": "Extra Data"
   }
 }

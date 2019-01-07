@@ -450,10 +450,12 @@ function generateBundler (opts, performBundle) {
   let bundler = browserify(browserifyOpts)
 
   // inject variables into bundle
-  bundler.transform(envify({
-    METAMASK_DEBUG: opts.devMode,
-    NODE_ENV: opts.devMode ? 'development' : 'production',
-  }))
+	bundler.transform(envify({
+		METAMASK_DEBUG: opts.devMode,
+		NODE_ENV: opts.devMode ? 'development' : 'production',
+	}), {
+		global: true,
+	})
 
   if (opts.watch) {
     bundler = watchify(bundler)

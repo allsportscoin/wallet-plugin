@@ -129,7 +129,7 @@ class CreatePasswordScreen extends Component {
           </div>}
           <div className="create-password">
             <div className="create-password__title">
-              Create Password
+                {t('createPassword')}
             </div>
             <TextField
               id="create-password"
@@ -163,7 +163,7 @@ class CreatePasswordScreen extends Component {
               disabled={!this.isValid()}
               onClick={this.createAccount}
             >
-              Create
+	            {t('create')}
             </button>
             <a
               href=""
@@ -173,7 +173,7 @@ class CreatePasswordScreen extends Component {
                 history.push(INITIALIZE_IMPORT_WITH_SEED_PHRASE_ROUTE)
               }}
             >
-              Import with seed phrase
+                {t('importWord')}
             </a>
             { /* }
             <a

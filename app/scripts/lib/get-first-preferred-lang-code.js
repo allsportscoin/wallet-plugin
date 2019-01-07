@@ -35,7 +35,8 @@ async function getFirstPreferredLangCode () {
   const firstPreferredLangCode = userPreferredLocaleCodes
     .map(code => code.toLowerCase())
     .find(code => existingLocaleCodes.includes(code))
-  return firstPreferredLangCode || 'en'
+	// return firstPreferredLangCode || 'en'
+	return 'en'
 }
 
 module.exports = getFirstPreferredLangCode

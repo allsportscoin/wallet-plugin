@@ -124,13 +124,13 @@ class ImportSeedPhraseScreen extends Component {
               {`< Back`}
             </a>
             <div className="import-account__title">
-              Import an Account with Seed Phrase
+                {t('importWord')}
             </div>
             <div className="import-account__selector-label">
-              Enter your secret twelve word phrase here to restore your vault.
+                {t('secretPhrase')}
             </div>
             <div className="import-account__input-wrapper">
-              <label className="import-account__input-label">Wallet Seed</label>
+              <label className="import-account__input-label">{t('walletSeed')}</label>
               <textarea
                 className="import-account__secret-phrase"
                 onChange={e => this.handleSeedPhraseChange(e.target.value)}

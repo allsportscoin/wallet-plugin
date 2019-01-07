@@ -127,7 +127,7 @@ async function startContainer (fileRegEx, testGenerator) {
       }
     )
   }, (err) => {
-    console.log('123', err)
+    console.log(err)
   })
 
 }
